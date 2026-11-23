@@ -809,7 +809,7 @@ footer a { color: #fff; }
         <h2>See your own numbers in 20 minutes.</h2>
         <p class="lede" style="margin-top:14px">A short call on WhatsApp or Google Meet. We show the owner's view and the console live, answer your CTO's questions, and set up a free 30-day pilot on up to 25 of your PCs.</p>
         <ol>
-          <li><span>Send the form. It opens WhatsApp with your details already written.</span></li>
+          <li><span>Send the form. It reaches us at once by email.</span></li>
           <li><span>We call you back the same working day.</span></li>
           <li><span>After 30 days you see every problem caught and fixed in your own report, then decide.</span></li>
         </ol>
@@ -826,9 +826,11 @@ footer a { color: #fff; }
           <label for="b-pcs">Computers<select id="b-pcs" name="pcs"><option>Up to 25</option><option>25 to 100</option><option>100 to 500</option><option>More than 500</option></select></label>
           <label for="b-when">Best time to call<select id="b-when" name="when"><option>Today</option><option>Tomorrow morning</option><option>Tomorrow afternoon</option><option>This week</option></select></label>
         </div>
+        <label for="b-email">Email (optional)<input id="b-email" name="email" type="email" autocomplete="email" inputmode="email"></label>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px">
         <label for="b-need">What matters most (optional)<textarea id="b-need" name="need" rows="2" placeholder="For example: downtime, data safety, audit, remote support"></textarea></label>
-        <button class="btn primary" type="submit" id="b-send">Book my demo on WhatsApp</button>
-        <p class="note" id="b-note">Or reach us directly: <span id="b-alt">sagarkerhalkar.com</span></p>
+        <button class="btn primary" type="submit" id="b-send">Book my demo</button>
+        <p class="note" id="b-note" aria-live="polite">Or reach us directly: <span id="b-alt">sagarkerhalkar.com</span></p>
       </form>
     </div></div>
   </section>
@@ -977,29 +979,51 @@ const CONTACT = { whatsapp: "918105977226", email: "sagarhatta@gmail.com" };   /
   ["c-pcs", "c-rate"].forEach((id) => $(id).addEventListener("input", refreshValues));
   drawChips(); drawGrid(); total();
 
-  // Demo booking: opens WhatsApp (or email) with the visitor's details written.
+  // Contact links: WhatsApp Web on computers, the WhatsApp app on phones.
   const wa = CONTACT.whatsapp.replace(/\D/g, "");
+  const isPhone = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  const waChat = isPhone ? "https://wa.me/" + wa : "https://web.whatsapp.com/send?phone=" + wa;
   const waShown = wa ? "+" + wa.slice(0, 2) + " " + wa.slice(2, 7) + " " + wa.slice(7) : "";
-  const links = [wa ? `<a href="tel:+${wa}">Call ${waShown}</a>` : "", wa ? `<a href="https://wa.me/${wa}">WhatsApp</a>` : "",
+  const links = [wa ? `<a href="tel:+${wa}">Call ${waShown}</a>` : "", wa ? `<a href="${waChat}" target="_blank" rel="noopener">WhatsApp</a>` : "",
     CONTACT.email ? `<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>` : ""].filter(Boolean);
   if (links.length) { $("b-alt").innerHTML = links.join(", "); $("f-contact").innerHTML = links.join(" &nbsp; "); }
-  $("book").addEventListener("submit", (e) => {
+  // Demo booking (owner 2026-11-23: "book demo should send mail to me"): the request is emailed to
+  // CONTACT.email through FormSubmit (free, no account; the first request sends an "Activate Form"
+  // email to that address, click it once). WhatsApp Web / app and email links are offered as well.
+  const waLink = (text) => (isPhone ? "https://wa.me/" + wa + "?text=" : "https://web.whatsapp.com/send?phone=" + wa + "&text=") + encodeURIComponent(text);
+  const mailLink = (text) => "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("Sagar RMM demo") + "&body=" + encodeURIComponent(text);
+  const others = (text) => [wa ? `<a href="${waLink(text)}" target="_blank" rel="noopener">send it on WhatsApp</a>` : "",
+    CONTACT.email ? `<a href="${mailLink(text)}">send it by email</a>` : "", wa ? `call <a href="tel:+${wa}">${waShown}</a>` : ""].filter(Boolean).join(", ");
+  $("book").addEventListener("submit", async (e) => {
     e.preventDefault();
     const f = e.target, v = (n) => (f.elements[n].value || "").trim();
-    const note = $("b-note");
+    const note = $("b-note"), btn = $("b-send");
     if (!v("name") || !v("org") || v("phone").replace(/\D/g, "").length < 10) {
       note.textContent = "Please give your name, organization and a 10-digit mobile number."; return;
     }
+    if (v("email") && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("email"))) { note.textContent = "Please check the email address, or leave it empty."; return; }
+    if (v("_honey")) return;
     const text = "Hi Sagar, I'd like a Sagar RMM demo.\nName: " + v("name") + "\nRole: " + v("role") + "\nOrganization: " + v("org") +
-      "\nMobile: " + v("phone") + "\nComputers: " + v("pcs") + "\nBest time: " + v("when") + (v("need") ? "\nWhat matters: " + v("need") : "");
-    if (wa) {
-      window.location.href = "https://wa.me/" + wa + "?text=" + encodeURIComponent(text);
-      note.innerHTML = '<span class="msg-ok">WhatsApp is opening with your details. Press Send there.</span>';
-    } else if (CONTACT.email) {
-      window.location.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("Sagar RMM demo") + "&body=" + encodeURIComponent(text);
-      note.innerHTML = '<span class="msg-ok">Your email app is opening with your details. Press Send there.</span>';
+      "\nMobile: " + v("phone") + (v("email") ? "\nEmail: " + v("email") : "") + "\nComputers: " + v("pcs") + "\nBest time: " + v("when") +
+      (v("need") ? "\nWhat matters: " + v("need") : "");
+    btn.disabled = true; btn.textContent = "Sending…"; note.textContent = "";
+    let sent = false;
+    try {
+      const body = { _subject: "Sagar RMM demo request: " + v("org"), _template: "table", _captcha: "false",
+        Name: v("name"), Role: v("role"), Organization: v("org"), Mobile: v("phone"), Computers: v("pcs"),
+        "Best time to call": v("when"), "What matters most": v("need") || "-", Page: location.href };
+      if (v("email")) body.email = v("email");
+      const r = await fetch("https://formsubmit.co/ajax/" + CONTACT.email, {
+        method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(body) });
+      const data = await r.json().catch(() => ({}));
+      sent = r.ok && String(data.success) === "true";
+    } catch (err) { sent = false; }
+    btn.disabled = false; btn.textContent = "Book my demo";
+    if (sent) {
+      note.innerHTML = `<span class="msg-ok">Thank you, ${v("name").replace(/[<>&"]/g, "")}. Your request has reached us; we will call you back the same working day.</span> If you like, also ${others(text)}.`;
+      f.reset();
     } else {
-      note.textContent = "Booking opens once the contact number is set. Meanwhile visit sagarkerhalkar.com.";
+      note.innerHTML = `Your request could not be sent from here. Please ${others(text)}.`;
     }
   });
 
