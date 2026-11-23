@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sagar RMM</title>
-<meta name="description" content="Sagar RMM watches every PC, laptop, smart board and tablet, tells you why one went down, repairs it, updates it and backs it up. Hindi and English. On your own server.">
+<meta name="description" content="For owners and CTOs: the health, risk and cost of every computer in your organization on one screen. Problems fixed at night, every disk backed up, every action on record. On your own server in India.">
 <meta name="theme-color" content="#2E5BFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -350,19 +350,108 @@ nav a:hover { color: var(--blue); }
 footer { background: var(--ink); color: #AEB9D6; padding-block: 34px; font-size: 14.5px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 30px; justify-content: space-between; }
 footer a { color: #fff; }
+
+/* ---- Owner / CTO edition (owner 2026-11-23: "from the point of view of the owner and CTO") ---- */
+.hero h1 { font-size: clamp(38px, 4.2vw, 58px); }
+.hero .for { display: inline-flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+.hero .for span { padding: 5px 12px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; }
+
+/* Owner's morning report on a phone, beside the laptop screen */
+.duo { position: relative; }
+.phone { position: absolute; right: -18px; bottom: -64px; width: 250px; border-radius: 34px; padding: 10px; background: #0E1A3A;
+  box-shadow: 0 40px 80px -30px rgba(14,26,58,.75); transform: translateZ(110px); }
+.phone .scr { border-radius: 26px; overflow: hidden; background: #ECE5DD; }
+.phone .wa-top { background: #075E54; color: #fff; padding: 12px 14px; font-size: 13px; display: flex; gap: 10px; align-items: center; }
+.phone .wa-top b { display: block; font-size: 14px; }
+.phone .wa-top i { width: 30px; height: 30px; border-radius: 50%; background: #25D366; flex: none; display: grid; place-items: center; font-style: normal; font-weight: 800; }
+.phone .bubble { margin: 10px; padding: 10px 12px; border-radius: 10px 10px 10px 2px; background: #fff; font-size: 12.5px; line-height: 1.45; color: #1f2937;
+  box-shadow: 0 1px 1px rgba(0,0,0,.1); }
+.phone .bubble b { display: block; font-size: 13px; color: #0E1A3A; }
+.phone .bubble .r { color: #B4202F; font-weight: 600; } .phone .bubble .g { color: #0B7A58; font-weight: 600; }
+.phone .bubble small { display: block; text-align: right; color: #9aa3ad; font-size: 10.5px; margin-top: 4px; }
+@media (max-width: 1000px) { .phone { right: 8px; } }
+@media (max-width: 600px) { .phone { position: relative; right: auto; bottom: auto; margin: 22px auto 0; transform: none; } }
+
+/* Trust strip */
+.trust .wrap { gap: 12px 30px; }
+.trust svg { stroke: var(--green); }
+
+/* Questions an owner cannot answer today */
+.qa { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 46px; }
+.q { padding: 28px 28px 24px; border-radius: 22px; background: var(--white); border: 1px solid var(--line); display: grid; gap: 12px; align-content: start; }
+.q .ask { font: 700 23px/1.2 var(--display); color: var(--ink); letter-spacing: -0.01em; }
+.q .ask::before { content: "?"; display: inline-grid; place-items: center; width: 30px; height: 30px; margin-right: 10px; border-radius: 9px;
+  background: var(--coral-soft); color: var(--coral); font-size: 18px; vertical-align: 2px; }
+.q p { color: var(--ink2); font-size: 16.5px; }
+.q .proof { justify-self: start; padding: 5px 12px; border-radius: 999px; background: var(--green-soft); color: #0B6E50; font-size: 14px; font-weight: 600; }
+.q.wide { grid-column: 1 / -1; background: var(--ink); border-color: var(--ink); }
+.q.wide .ask { color: #fff; } .q.wide p { color: #C7D1EA; }
+@media (max-width: 860px) { .qa { grid-template-columns: 1fr; } }
+
+/* Downtime cost calculator */
+.calc { margin-top: 44px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 0; border-radius: 26px; overflow: hidden; border: 1px solid var(--line);
+  box-shadow: 0 40px 80px -50px rgba(14,26,58,.7); }
+.calc .in { background: var(--white); padding: 34px; display: grid; gap: 24px; align-content: start; }
+.calc label { display: grid; gap: 8px; font-weight: 600; color: var(--ink2); }
+.calc label .v { font: 800 26px var(--display); color: var(--ink); font-variant-numeric: tabular-nums; }
+.calc label small { font-weight: 400; color: var(--muted); font-size: 14.5px; }
+.calc input[type=range] { width: 100%; accent-color: var(--blue); height: 28px; }
+.calc .out { background: var(--ink); color: #fff; padding: 34px; display: grid; gap: 18px; align-content: start; }
+.calc .line2 { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.calc .line2 span { color: #C7D1EA; }
+.calc .line2 b { font: 800 30px var(--display); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.calc .loss b { color: #FF9BA5; } .calc .cost b { color: #FFC266; }
+.calc .gain { padding: 20px 22px; border-radius: 18px; background: rgba(18,184,134,.16); border: 1px solid rgba(110,231,183,.4); }
+.calc .gain span { color: #B7F5DC; display: block; }
+.calc .gain b { display: block; font: 800 clamp(36px, 4.4vw, 52px)/1.05 var(--display); color: #6EE7B7; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.calc .note2 { color: #AEB9D6; font-size: 14px; }
+@media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
+
+/* Owner's view board */
+.board { margin-top: 44px; border-radius: 24px; padding: 26px; background: #0F1A30; color: #EEF3FB; box-shadow: 0 50px 90px -50px rgba(14,26,58,.9);
+  display: grid; grid-template-columns: 300px 1fr 1fr 1fr; gap: 16px; }
+.board .tile { border-radius: 18px; padding: 20px; background: #15233D; border: 1px solid #22314F; display: grid; gap: 6px; align-content: start; }
+.board .tile span { color: #9AA8C2; font-size: 14.5px; }
+.board .tile b { font: 800 38px/1 var(--display); font-variant-numeric: tabular-nums; }
+.board .tile em { font-style: normal; font-size: 14px; font-weight: 600; }
+.board .up { color: #6EE7B7; } .board .down { color: #FF9BA5; }
+.board .score { grid-row: span 2; display: grid; justify-items: center; align-content: center; text-align: center; gap: 10px; }
+.ring { width: 170px; height: 170px; border-radius: 50%; display: grid; place-items: center;
+  background: conic-gradient(#34C37A calc(var(--s) * 1%), #22314F 0); }
+.ring::after { content: attr(data-s); width: 136px; height: 136px; border-radius: 50%; background: #15233D; display: grid; place-items: center;
+  font: 800 52px var(--display); color: #fff; }
+.board .list { grid-column: 1 / -1; display: grid; gap: 8px; }
+.board .item { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; padding: 12px 16px; border-radius: 12px; background: rgba(255,255,255,.03); border: 1px solid #22314F; font-size: 15.5px; }
+.board .item small { display: block; color: #9AA8C2; font-size: 13.5px; }
+@media (max-width: 1000px) { .board { grid-template-columns: 1fr 1fr; } .board .score { grid-row: auto; grid-column: 1 / -1; } .board .list { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .board { grid-template-columns: 1fr; padding: 16px; } }
+.owner-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 26px; }
+.owner-points div { padding: 20px 22px; border-radius: 18px; background: var(--white); border: 1px solid var(--line); }
+.owner-points b { display: block; font: 700 18px var(--display); margin-bottom: 4px; }
+.owner-points p { color: var(--muted); font-size: 15.5px; }
+@media (max-width: 860px) { .owner-points { grid-template-columns: 1fr; } }
+
+/* For the CTO: specifics in a two-column sheet */
+.cto { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
+.cto div { padding: 22px 26px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }
+.cto div:nth-child(odd) { border-right: 1px solid var(--line); }
+.cto svg { width: 30px; height: 30px; padding: 6px; border-radius: 9px; background: var(--blue-soft); stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cto b { display: block; font: 700 18px var(--display); }
+.cto p { color: var(--muted); font-size: 15.5px; }
+@media (max-width: 860px) { .cto { grid-template-columns: 1fr; } .cto div:nth-child(odd) { border-right: 0; } }
 </style>
 </head>
 <body>
 
-<div class="note-bar">New: problems now fix themselves after hours. <a href="#film">Watch the 75-second film</a></div>
+<div class="note-bar">For owners, directors and CTOs. <a href="#cost">Work out what PC trouble costs you</a></div>
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>Sagar RMM</a>
     <nav aria-label="Sections">
-      <a href="#problems">Problems we solve</a><a href="#tour">Live tour</a><a href="#screens">Screens</a><a href="#pricing">Pricing</a><a href="#faq">Questions</a>
+      <a href="#cost">The cost</a><a href="#owner">Owner's view</a><a href="#cto">For the CTO</a><a href="#film">Film</a><a href="#pricing">Pricing</a><a href="#faq">Questions</a>
     </nav>
     <a class="btn line" href="#film">Watch the film</a>
-    <a class="btn primary" href="#demo">Book a free demo</a>
+    <a class="btn primary" href="#demo">Book a demo</a>
   </div>
 </header>
 
@@ -370,42 +459,34 @@ footer a { color: #fff; }
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="pill"><b></b>Watching every PC, every minute</span>
-        <h1>Stop PCs failing before your work stops.</h1>
-        <p class="hinglish">PC band hone se pehle pata chale, aur khud theek ho jaye.</p>
-        <p class="lede">One console for every computer, laptop, smart board and tablet. It tells you why a PC went down,
-          repairs it, keeps it updated, backs it up every night, and lets you take over the screen from anywhere.</p>
+        <div class="for"><span>For owners</span><span>For CTOs</span><span>For IT heads</span></div>
+        <h1>Every computer in your business. Under your control.</h1>
+        <p class="hinglish">Kaam rukne se pehle, PC ki problem khatam.</p>
+        <p class="lede">See the health, risk and cost of every computer in your organization on one screen, even from your phone.
+          Problems are fixed at night, before they cost a working day, and every action is on record.</p>
         <div class="cta">
-          <a class="btn primary" href="#demo">Book a free demo</a>
-          <a class="btn line" href="#film"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch the film</a>
+          <a class="btn primary" href="#cost">Calculate your downtime cost</a>
+          <a class="btn line" href="#demo">Book a 20-minute demo</a>
         </div>
-        <p class="small">Free 30-day pilot on up to 25 PCs. Windows, Linux, macOS and Android. Hindi and English.</p>
+        <p class="small">Free 30-day pilot on up to 25 PCs. Runs on your own server in India, or hosted by us.</p>
       </div>
 
-      <div class="stage" id="hero-stage">
-        <div class="devs" aria-hidden="true">
-          <span class="dev" style="left:6%; bottom:-15%"><b></b><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Windows</span>
-          <span class="dev" style="right:4%; top:-9%"><b></b><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="12" rx="2"/><path d="M2 19h20"/></svg>Laptop</span>
-          <span class="dev" style="left:34%; bottom:-17%"><b></b><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="1"/><path d="M12 17v3M7 21h10"/></svg>Smart board</span>
-          <span class="dev" style="right:-7%; top:42%"><b></b><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Tablet</span>
-        </div>
+      <div class="stage duo" id="hero-stage">
         <div class="tilt" id="hero-tilt">
           <figure class="frame" style="margin:0">
             <div class="top"><i></i><i></i><i></i><span>your-server / Home</span></div>
-            <img src="img/home.webp" width="1440" height="900" alt="Sagar RMM home screen: IT health score, internet lines and network devices">
+            <img src="img/home.webp" width="1440" height="900" alt="Sagar RMM home screen: IT health score, what to fix first, internet lines and network devices">
           </figure>
-          <div class="float fix-pos bob" style="right:-28px; bottom:-44px">
-            <div class="fixcard" id="fixcard" role="status" aria-live="polite">
-              <span class="state"><i></i><span id="fix-state">Problem found</span></span>
-              <b id="fix-title">LAB1-PC04 may not start tomorrow</b>
-              <span class="was" id="fix-was">Disk errors 3 times this week, switched off at the wall twice.</span>
-              <span class="now" id="fix-now">Disk repaired at 11:20 PM. Files backed up.</span>
-            </div>
-          </div>
-          <div class="float bob slow" style="left:-54px; top:-92px">
-            <div class="chat" aria-label="Example of Ask">
-              <div class="msg me">reception wala PC kyun band hua?</div>
-              <div class="msg bot typing" id="typed">Lost power at 11:42 while in use.</div>
+          <div class="phone" aria-label="Example of the morning report on WhatsApp">
+            <div class="scr">
+              <div class="wa-top"><i>S</i><div><b>Sagar RMM</b>Daily report</div></div>
+              <div class="bubble"><b>Good morning. Yesterday at your office</b>
+                IT health <span class="g">92 / 100</span><br>
+                212 of 214 PCs worked all day<br>
+                <span class="r">2 disks failing</span>, files already backed up<br>
+                <span class="g">38 updates</span> installed overnight<br>
+                Problems fixed by itself: <span class="g">7</span>
+                <small>7:30 AM</small></div>
             </div>
           </div>
         </div>
@@ -413,67 +494,96 @@ footer a { color: #fff; }
     </div>
   </section>
 
-  <div class="strip" aria-label="Works with">
+  <div class="strip trust" aria-label="Security and deployment">
     <div class="wrap">
-      <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Windows 10, 11 and Server</span>
-      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>Ubuntu and Linux</span>
-      <span><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="12" rx="2"/><path d="M2 19h20"/></svg>macOS</span>
-      <span><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Android tablets</span>
-      <span><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="1"/><path d="M12 17v3M7 21h10"/></svg>Smart boards</span>
+      <span><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg>Your server, data in India</span>
+      <span><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Encrypted backups</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>Two-step sign-in and roles</span>
+      <span><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v7H4V5h11"/></svg>ISO 27001 audit pack</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Every action on record</span>
     </div>
   </div>
 
-  <section style="padding-block:64px 24px">
-    <div class="wrap numbers">
-      <div class="num"><strong data-count="60">60</strong><span>seconds between checks on every PC</span></div>
-      <div class="num"><strong data-count="4">4</strong><span>systems in one console: Windows, Linux, macOS, Android</span></div>
-      <div class="num"><strong data-count="11" data-suffix=" PM">11 PM</strong><span>repairs and updates run after working hours</span></div>
-      <div class="num"><strong data-count="0" data-prefix="₹">₹0</strong><span>for a 30-day pilot on 25 PCs</span></div>
+  <section id="questions">
+    <div class="wrap">
+      <div class="head center">
+        <h2>Seven questions most owners cannot answer today.</h2>
+        <p class="lede">Sagar RMM answers each one with your own data, every day.</p>
+      </div>
+      <div class="qa">
+        <div class="q"><span class="ask">Which PCs stopped work last month, and why?</span>
+          <p>Every crash, freeze, power loss and disk error, by PC and by department, with the cause of each stop.</p><span class="proof">Problems report, 30 days</span></div>
+        <div class="q"><span class="ask">Which computers will fail next?</span>
+          <p>Disk errors, hard switch-offs and crashes are flagged days before a PC stops starting, and repaired that night.</p><span class="proof">Problems, fixed by itself</span></div>
+        <div class="q"><span class="ask">If a disk dies tonight, what do we lose?</span>
+          <p>Nothing. Every disk is backed up every night, encrypted, to cloud storage you own.</p><span class="proof">Whole-disk backup</span></div>
+        <div class="q"><span class="ask">Who opened which computer, and when?</span>
+          <p>Every remote session, file sent and change made is recorded with the person's name, and users can be asked first.</p><span class="proof">Audit log</span></div>
+        <div class="q"><span class="ask">What do we own, who has it, and what are we paying for but not using?</span>
+          <p>Every PC, laptop and licence with its bill, warranty and user. Unused licence seats are shown so you stop paying for them.</p><span class="proof">Assets and licences</span></div>
+        <div class="q"><span class="ask">Are we ready if an auditor walks in tomorrow?</span>
+          <p>Asset register, patch status, backups and access records in one download for the auditor.</p><span class="proof">ISO 27001 audit pack</span></div>
+        <div class="q wide"><span class="ask">What happens when our IT person leaves?</span>
+          <p>Nothing stops. Every PC, licence key, repair and decision lives in the system with its history, not in one person's head. A new person sees everything on day one.</p></div>
+      </div>
     </div>
   </section>
 
-  <section id="problems">
+  <section id="cost" class="alt">
     <div class="wrap">
       <div class="head center">
-        <h2>The problems every office has. Solved.</h2>
-        <p class="lede">Each everyday IT problem, and what Sagar RMM does about it, by itself.</p>
+        <h2>What PC trouble is costing you.</h2>
+        <p class="lede">Put in your own numbers. Nothing is sent anywhere; the sum is done in your browser.</p>
       </div>
-      <div class="pairs">
-        <div class="pair">
-          <div class="pain"><h3>A PC will not start in the morning.</h3><p>Work stops, and nobody saw it coming.</p></div>
-          <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <div class="cure"><h3>Warned days before.</h3><p>Disk errors and hard switch-offs are flagged, the files are backed up and the disk is repaired that night.</p><small>In Sagar RMM: Problems</small></div>
+      <div class="calc">
+        <div class="in">
+          <label>Computers in your organization <span class="v" id="c-pcs-v">200</span>
+            <input type="range" id="c-pcs" min="10" max="5000" step="10" value="200"></label>
+          <label>Working hours lost per PC in a month <span class="v" id="c-hrs-v">2 h</span>
+            <small>Slow PC, a crash, waiting for IT, an update during work, a PC that will not start.</small>
+            <input type="range" id="c-hrs" min="0.5" max="10" step="0.5" value="2"></label>
+          <label>Cost of one employee hour <span class="v" id="c-rate-v">₹300</span>
+            <small>Salary and overheads divided by working hours.</small>
+            <input type="range" id="c-rate" min="100" max="2000" step="50" value="300"></label>
+          <label>Share of that time Sagar RMM prevents <span class="v" id="c-share-v">50%</span>
+            <small>Your estimate. Repairs at night, early warnings and fast remote are where it comes from.</small>
+            <input type="range" id="c-share" min="10" max="90" step="5" value="50"></label>
         </div>
-        <div class="pair">
-          <div class="pain"><h3>Nobody knows why it went down.</h3><p>Power cut? Crash? The user? Everyone guesses.</p></div>
-          <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <div class="cure"><h3>The real cause, in plain words.</h3><p>Read from the PC&#x27;s own logs: lost power, blue screen, driver crash or disk, with what to do.</p><small>In Sagar RMM: Machine history</small></div>
+        <div class="out" aria-live="polite">
+          <div class="line2 loss"><span>Lost today, every month</span><b id="c-loss">₹1,20,000</b></div>
+          <div class="line2 cost"><span>Sagar RMM Pro, every month</span><b id="c-cost">₹28,800</b></div>
+          <div class="gain"><span>What you keep, every month</span><b id="c-gain">₹31,200</b></div>
+          <div class="line2"><span>In a year</span><b id="c-year">₹3,74,400</b></div>
+          <p class="note2" id="c-note">Pro at ₹144 per PC a month, before GST. The pilot costs nothing, so you can measure your real number first.</p>
         </div>
-        <div class="pair">
-          <div class="pain"><h3>Updates fail, or never happen.</h3><p>PCs stay months behind and open to attack.</p></div>
-          <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <div class="cure"><h3>Installed after 11 PM, by itself.</h3><p>Windows, Linux, Mac and app updates on every PC, with the exact reason when one fails.</p><small>In Sagar RMM: Updates</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="owner">
+    <div class="wrap">
+      <div class="head">
+        <h2>The owner's view. One look, every morning.</h2>
+        <p class="lede">Not a wall of graphs. The few numbers that tell you whether IT is costing you, and what is being done about it. Sample data below.</p>
+      </div>
+      <div class="board" aria-label="Example of the owner's view">
+        <div class="tile score"><div class="ring" id="ring" style="--s:92" data-s="92"></div><span>IT health this week</span><em class="up">Up from 78 a month ago</em></div>
+        <div class="tile"><span>Problems fixed by itself this week</span><b>23</b><em class="up">At night, nobody waited</em></div>
+        <div class="tile"><span>PCs working today</span><b>212 / 214</b><em class="down">2 being repaired</em></div>
+        <div class="tile"><span>Backed up last night</span><b>214</b><em class="up">All disks, encrypted</em></div>
+        <div class="tile"><span>Updates installed this week</span><b>1,486</b><em class="up">All after working hours</em></div>
+        <div class="tile"><span>Licence seats paid but unused</span><b>14</b><em class="down">Renew fewer next time</em></div>
+        <div class="tile"><span>Warranties ending in 30 days</span><b>6</b><em class="down">Claim before they end</em></div>
+        <div class="list">
+          <div class="item"><div>ACCOUNTS-PC03 disk failing<small>Files backed up at 11:02 PM. New disk recommended this week.</small></div><span class="tagx bad">Needs a decision</span></div>
+          <div class="item"><div>Branch 2 internet line slow since Monday<small>Jio line at 18 Mbps instead of 100; 9 PCs use it. Call the provider.</small></div><span class="tagx warn">Watching</span></div>
+          <div class="item"><div>Design team laptops repaired overnight<small>Graphics driver crashes on 4 laptops, fixed at 11:40 PM.</small></div><span class="tagx ok">Done</span></div>
         </div>
-        <div class="pair">
-          <div class="pain"><h3>Someone at another branch needs help now.</h3><p>A one-hour trip for a two-minute fix.</p></div>
-          <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <div class="cure"><h3>Their screen, on yours, in seconds.</h3><p>Fast remote control from anywhere, with their permission. Chat and send files too.</p><small>In Sagar RMM: Remote</small></div>
-        </div>
-        <div class="pair">
-          <div class="pain"><h3>A disk dies, and the files go with it.</h3><p>Months of work, gone.</p></div>
-          <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <div class="cure"><h3>Every disk, backed up every night.</h3><p>Encrypted, to your own cloud. Bring back one file or the whole PC.</p><small>In Sagar RMM: Backups</small></div>
-        </div>
-        <div class="pair">
-          <div class="pain"><h3>Slow internet, and everyone blames IT.</h3><p>Which line? Which PC is eating the bandwidth?</p></div>
-          <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <div class="cure"><h3>Every line and every PC, measured.</h3><p>Speed of each internet line, and which PCs downloaded and uploaded the most.</p><small>In Sagar RMM: Home, internet lines</small></div>
-        </div>
-        <div class="pair">
-          <div class="pain"><h3>Nobody knows who has which laptop.</h3><p>Warranties lapse, bills get lost, assets go missing.</p></div>
-          <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-          <div class="cure"><h3>An asset register that stays true.</h3><p>Linked to the live PCs: who has it, its bill, warranty and serial number.</p><small>In Sagar RMM: Assets</small></div>
-        </div>
+      </div>
+      <div class="owner-points">
+        <div><b>On your phone</b><p>The same summary arrives every morning on WhatsApp or email, for you and your management team.</p></div>
+        <div><b>Decisions, not alerts</b><p>Only what needs a decision reaches you: buy a disk, renew a warranty, change an internet line.</p></div>
+        <div><b>Proof for the board</b><p>A 30-day report of every problem, its cause and the repair, ready to share.</p></div>
       </div>
     </div>
   </section>
@@ -481,22 +591,41 @@ footer a { color: #fff; }
   <section id="film" class="alt">
     <div class="wrap">
       <div class="head center">
-        <h2>See it fix real problems in 75 seconds.</h2>
-        <p class="lede">Seven everyday IT problems, and the screen in Sagar RMM that solves each one.</p>
+        <h2>Watch it, from the owner's chair.</h2>
+        <p class="lede">83 seconds: what PC trouble costs, and how Sagar RMM gives you control of it.</p>
       </div>
       <div class="film">
-        <video controls playsinline preload="metadata" poster="media/problems-solved-poster.jpg">
-          <source src="media/problems-solved.mp4" type="video/mp4">
+        <video controls playsinline preload="metadata" poster="media/owners-film-poster.jpg">
+          <source src="media/owners-film.mp4" type="video/mp4">
         </video>
       </div>
     </div>
   </section>
 
-  <section id="tour">
+  <section id="cto">
     <div class="wrap">
       <div class="head">
-        <h2>Click through the real console.</h2>
-        <p class="lede">These are the screens your IT team uses every day, with sample data. Pick one, or let it play.</p>
+        <h2>For the CTO: what is under the hood.</h2>
+        <p class="lede">Straight answers to what your technical team will ask.</p>
+      </div>
+      <div class="cto">
+        <div><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg><span><b>Where it runs</b><p>On your own Windows or Linux server, or hosted by us. PC data and backups stay where you decide.</p></span></div>
+        <div><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span><b>What it covers</b><p>Windows 10, 11 and Server, Ubuntu and other Linux, macOS, Android tablets and smart boards, plus routers, cameras, printers and websites.</p></span></div>
+        <div><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span><b>Access control</b><p>Roles per person, two-step sign-in for remote and other powerful actions, and users who see only their own department's PCs.</p></span></div>
+        <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Audit trail</b><p>Every remote session, file transfer, repair, update and setting change, with who, when and why.</p></span></div>
+        <div><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 0 1 0-10 7 7 0 0 1 13 2 4 4 0 0 1 0 8z"/></svg><span><b>Backup</b><p>Whole-disk, encrypted before it leaves the PC, incremental after the first night, to Google Drive, OneDrive, Backblaze, R2 or any S3 storage.</p></span></div>
+        <div><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span><b>It checks itself</b><p>A self-check page tests every feature on every PC every minute, with the reason when something is off.</p></span></div>
+        <div><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span><b>Patching</b><p>Operating system, driver and app updates after working hours, with the exact reason when one fails.</p></span></div>
+        <div><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg><span><b>Rollout</b><p>One installer per PC, or pushed to the whole network. Agents update themselves. Most offices are running in an afternoon.</p></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tour" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <h2>What your IT team works with.</h2>
+        <p class="lede">The screens behind the owner's view, with sample data. Pick one, or let it play.</p>
       </div>
       <div class="tour">
         <div class="tabs" role="tablist" aria-label="Product screens">
@@ -508,15 +637,7 @@ footer a { color: #fff; }
         </div>
         <div class="viewer"><div class="panel3d screen" id="tour-panel" role="tabpanel" aria-live="polite"></div></div>
       </div>
-    </div>
-  </section>
-
-  <section id="screens" class="alt">
-    <div class="wrap">
-      <div class="head center">
-        <h2>Every PC, every line, every device. On one screen.</h2>
-      </div>
-      <div class="shots">
+      <div class="shots" style="margin-top:72px">
         <div class="shot-tabs" role="tablist" aria-label="Console screens">
           <button role="tab" aria-selected="true" data-shot="0">Home</button>
           <button role="tab" aria-selected="false" data-shot="1">All machines</button>
@@ -534,142 +655,20 @@ footer a { color: #fff; }
     </div>
   </section>
 
-  <section id="how">
-    <div class="wrap">
-      <div class="story">
-        <div>
-          <span class="tag c1">Find the cause</span>
-          <h2>It tells you what really happened.</h2>
-          <p class="lede">Other tools show a red dot. Sagar RMM reads each PC's own logs and says, in plain words, why it went down and what to do.</p>
-          <ul>
-            <li>Lost power while in use, office power cut, or switched off at the wall</li>
-            <li>Froze, blue screen or graphics crash, with the driver or program behind it</li>
-            <li>Disk errors and hard switch-offs that lead to a PC that will not start</li>
-          </ul>
-        </div>
-        <div class="stage"><div class="tilt" data-tilt style="--rx:6deg; --ry:-10deg">
-          <div class="screen"><div class="chrome"><i></i><i></i><i></i><span>RECEPTION, what happened today</span></div>
-            <div class="demo">
-              <div class="tl">
-                <div><time>11:38</time><i class="ok"></i><span>Working normally, 41% memory</span></div>
-                <div><time>11:42</time><i class="bad"></i><span>Lost power while in use (no shutdown)</span></div>
-                <div><time>11:42</time><i></i><span>Other 22 PCs on the same network stayed on</span></div>
-                <div><time>11:51</time><i class="warn"></i><span>Started again; disk checked, no errors</span></div>
-              </div>
-              <div class="verdict"><b>Cause: this PC's power, not an office power cut.</b> Check its cable, extension board and UPS. Back up its files today.</div>
-            </div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="story flip">
-        <div>
-          <span class="tag c2">Repair and update</span>
-          <h2>Fixes itself. Updates itself. After hours.</h2>
-          <p class="lede">When a PC's system files or disk go wrong, the repair starts on its own. Updates install outside working hours, and you see exactly why one failed.</p>
-          <ul>
-            <li>Windows: system file and disk repair. Linux: broken packages and disk check. Mac: disk check</li>
-            <li>Windows, Linux and macOS updates plus app updates, one PC or all</li>
-            <li>Nothing restarts during working hours</li>
-          </ul>
-        </div>
-        <div class="stage"><div class="tilt" data-tilt style="--rx:6deg; --ry:10deg">
-          <div class="screen run"><div class="chrome"><i></i><i></i><i></i><span>LAB1-PC04, automatic repair</span></div>
-            <div class="demo">
-              <div class="step"><header><span>Repairing system files</span><span>done</span></header><div class="bar2"><i></i></div></div>
-              <div class="step"><header><span>Checking the disk</span><span>done</span></header><div class="bar2"><i></i></div></div>
-              <div class="step"><header><span>Installing 7 updates (after 11 PM)</span><span>done</span></header><div class="bar2"><i></i></div></div>
-              <span class="done-badge">✓ Problem resolved. Leaves the list in 24 hours</span>
-            </div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="story">
-        <div>
-          <span class="tag c3">Remote</span>
-          <h2>Take over any screen, from anywhere.</h2>
-          <p class="lede">Fast remote control, files and a terminal for every computer, from the office or from home. Wake up a whole office before the working day.</p>
-          <ul>
-            <li>See and control the screen, with the user's permission rules</li>
-            <li>Chat with the person at the PC, or send a message or file to a whole lab</li>
-            <li>Wake up, restart and shut down one PC or all of them</li>
-          </ul>
-        </div>
-        <div class="stage"><div class="tilt" data-tilt style="--rx:5deg; --ry:-9deg">
-          <div class="screen"><div class="chrome"><i></i><i></i><i></i><span>Remote, STU5-PC, control</span></div>
-            <div class="demo">
-              <div class="desk" aria-label="A remote screen with the cursor clicking Install">
-                <div class="win"><u></u><u></u><u></u><em>Install now</em></div>
-                <div class="taskbar"></div>
-                <span class="live-tag">LIVE 34 ms</span>
-                <svg class="cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l14 9-6.5 1.5L8 20z" fill="#fff" stroke="#0b1426" stroke-width="1.5"/></svg>
-              </div>
-            </div>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="story flip">
-        <div>
-          <span class="tag c4">Backup and restore</span>
-          <h2>Every disk, backed up every night.</h2>
-          <p class="lede">Each PC backs up its whole disk to your own cloud storage, encrypted. After the first night only changes go up. Bring back one file or everything, onto the same PC or a new one.</p>
-          <ul>
-            <li>Google Drive, OneDrive, Backblaze, Cloudflare R2 or any S3 storage</li>
-            <li>Keeps 7 daily, 4 weekly and 6 monthly copies</li>
-            <li>Restore a folder in two clicks while the user keeps working</li>
-          </ul>
-        </div>
-        <div class="stage"><div class="tilt" data-tilt style="--rx:6deg; --ry:9deg">
-          <div class="screen"><div class="chrome"><i></i><i></i><i></i><span>Backups, tonight</span></div>
-            <div class="demo">
-              <div class="cloud-demo">
-                <div class="node"><svg viewBox="0 0 64 64" fill="none" stroke="#9fc8ff" stroke-width="2.5"><rect x="8" y="12" width="48" height="32" rx="4"/><path d="M24 54h16M32 44v10"/></svg>68 PCs</div>
-                <div class="pipe" aria-hidden="true"><i></i></div>
-                <div class="node"><svg viewBox="0 0 64 64" fill="none" stroke="#ffd58a" stroke-width="2.5"><path d="M20 46h26a10 10 0 0 0 1-20 14 14 0 0 0-27-3 11 11 0 0 0 0 23z"/><path d="M33 30v12M28 35l5-5 5 5"/></svg>Your cloud</div>
-              </div>
-              <div class="snaps" aria-label="Copies kept, last 7 nights"><span class="on">Mon</span><span class="on">Tue</span><span class="on">Wed</span><span class="on">Thu</span><span class="on">Fri</span><span class="on">Sat</span><span class="on">Sun</span></div>
-              <span class="done-badge">✓ 66 PCs backed up. 1.8 GB sent tonight</span>
-            </div>
-          </div>
-        </div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="features" class="alt">
-    <div class="wrap">
-      <div class="head center"><h2>All the tools an IT person needs.</h2>
-        <p class="lede">One app instead of five, priced per PC.</p></div>
-      <div class="cards">
-        <div class="card"><span class="ico" style="--c:#2E5BFF"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><h3>Live monitoring</h3><p>CPU, memory, disk, graphics, temperature and network, every minute.</p></div>
-        <div class="card"><span class="ico" style="--c:#12B886"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg></span><h3>Updates and patching</h3><p>Windows, Linux, macOS and app updates, after hours, with the reason when one fails.</p></div>
-        <div class="card"><span class="ico" style="--c:#FF4D5E"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Problems with solutions</h3><p>Each problem shows its cause and the fix; resolved ones go to the monthly report.</p></div>
-        <div class="card"><span class="ico" style="--c:#7A5CFF"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></span><h3>Local chat</h3><p>Chat with the person at a PC, or send a message or file to a whole lab.</p></div>
-        <div class="card"><span class="ico" style="--c:#FF9F1C"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><h3>Fast file transfer</h3><p>PC to PC over the office network, through the server when apart.</p></div>
-        <div class="card"><span class="ico" style="--c:#0EA5E9"><svg viewBox="0 0 24 24"><path d="M4 7l8-4 8 4-8 4zM4 12l8 4 8-4M4 17l8 4 8-4"/></svg></span><h3>Assets and bills</h3><p>Who has which PC, warranty, bill and serial, linked to the live machine.</p></div>
-        <div class="card"><span class="ico" style="--c:#12B886"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v7H4V5h11"/></svg></span><h3>Helpdesk and alerts</h3><p>Users raise requests from their PC; you get alerts and a daily summary.</p></div>
-        <div class="card"><span class="ico" style="--c:#2E5BFF"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 8l4 8M17 8l-4 8"/></svg></span><h3>Network and internet</h3><p>Routers, cameras, printers and every internet line, with its speed.</p></div>
-        <div class="card"><span class="ico" style="--c:#7A5CFF"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Self-check</h3><p>The app checks itself: every feature on every PC, with the reason when something is off.</p></div>
-      </div>
-    </div>
-  </section>
-
   <section id="win">
     <div class="wrap">
       <div class="head center"><h2>A deal where everyone wins.</h2>
-        <p class="lede">You only pay while it is working for you. That keeps us honest, and keeps your PCs running.</p></div>
+        <p class="lede">You pay only while it is working for you. That keeps us honest, and keeps your PCs running.</p></div>
       <div class="wins">
         <div class="win-col" style="--c:#2E5BFF">
           <span class="who" style="background:#2E5BFF"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg></span>
-          <h3>Your organization</h3>
-          <ul><li>Free 30-day pilot on up to 25 PCs</li><li>Pay per PC, month by month, stop any time</li><li>Data stays on your own server in India</li><li>Fewer PCs down during working hours</li></ul>
+          <h3>The owner</h3>
+          <ul><li>Fewer PCs down, with every stop on record</li><li>Pay per PC, month by month, stop any time</li><li>Data stays in your control</li><li>No dependence on one person</li></ul>
         </div>
         <div class="win-col" style="--c:#12B886">
           <span class="who" style="background:#12B886"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span>
-          <h3>Your IT person</h3>
-          <ul><li>Repairs and updates happen at night, not during work</li><li>One console instead of five tools</li><li>Ask questions in Hindi or English</li><li>A monthly report ready for management</li></ul>
+          <h3>The CTO and IT team</h3>
+          <ul><li>Repairs and updates happen at night</li><li>One console instead of five tools</li><li>Audit-ready at any time</li><li>Ask questions in Hindi or English</li></ul>
         </div>
         <div class="win-col" style="--c:#FF9F1C">
           <span class="who" style="background:#FF9F1C"><svg viewBox="0 0 24 24"><path d="M8 12l3 3 5-6"/><circle cx="12" cy="12" r="9"/></svg></span>
@@ -680,33 +679,22 @@ footer a { color: #fff; }
     </div>
   </section>
 
-  <section class="alt">
+  <section id="pricing" class="alt">
     <div class="wrap">
-      <div class="head center"><h2>Running in one afternoon.</h2></div>
-      <ol class="steps3">
-        <li><h3>Book a demo</h3><p>A 20-minute call on WhatsApp or Google Meet. We show the live console with your questions.</p></li>
-        <li><h3>Install on your PCs</h3><p>One small installer per PC, or push it to all of them. PCs appear within five minutes.</p></li>
-        <li><h3>Let it work</h3><p>Problems, fixes and updates start the same day. Decide after 30 days.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div class="wrap">
-      <div class="head center"><h2>Simple prices in rupees.</h2>
+      <div class="head center"><h2>Priced per PC. Measured in hours saved.</h2>
         <p class="lede">Per PC, per month, plus GST. Pay yearly and get two months free.</p></div>
       <div class="plans">
         <div class="plan">
           <h3>Basic</h3>
           <div class="price">₹81 <small>/ PC / month</small></div>
-          <ul><li>Live monitoring and alerts</li><li>Problems list with solutions</li><li>Updates and patching</li><li>Local chat and messages</li><li>Assets and hardware</li><li>Ask in Hindi and English</li></ul>
+          <ul><li>Live monitoring and alerts</li><li>Problems list with solutions</li><li>Updates and patching</li><li>Assets and licences</li><li>Daily summary for management</li><li>Ask in Hindi and English</li></ul>
           <a class="btn line" href="#demo">Start a free pilot</a>
         </div>
         <div class="plan main">
           <span class="badge">Most chosen</span>
           <h3>Pro</h3>
           <div class="price">₹144 <small>/ PC / month</small></div>
-          <ul><li>Everything in Basic</li><li>Fast remote control</li><li>Automatic repair</li><li>Whole-disk backup and restore</li><li>Wake up, restart, shut down</li><li>Fast file transfer, helpdesk, monthly report</li></ul>
+          <ul><li>Everything in Basic</li><li>Fixes problems by itself</li><li>Whole-disk encrypted backup</li><li>Fast remote control</li><li>Audit pack and 30-day problems report</li><li>Wake, restart and shut down</li></ul>
           <a class="btn primary" href="#demo">Start a free pilot</a>
         </div>
         <div class="plan">
@@ -719,15 +707,16 @@ footer a { color: #fff; }
     </div>
   </section>
 
-  <section id="faq" class="alt">
+  <section id="faq">
     <div class="wrap">
-      <div class="head center"><h2>Questions people ask.</h2></div>
+      <div class="head center"><h2>What owners and CTOs ask us.</h2></div>
       <div class="faq" style="margin-inline:auto">
-        <details><summary>Does our data leave our office?</summary><p>No, if you choose. Sagar RMM can run on your own server in your office, so PC data and backups stay with you. A hosted option is there for those who prefer it.</p></details>
-        <details><summary>Which computers does it work on?</summary><p>Windows 10 and 11, Windows Server, Ubuntu and other Linux, macOS, Android tablets and smart boards.</p></details>
-        <details><summary>How long does setup take?</summary><p>One small installer per PC. Each PC appears in the console within five minutes. Most offices are done in an afternoon.</p></details>
-        <details><summary>Do we need a full-time IT team?</summary><p>No. It is built so one person can look after hundreds of PCs: repairs and updates run on their own after hours, and the console says what to do when something needs a person.</p></details>
-        <details><summary>What happens after the free pilot?</summary><p>Choose a plan and keep going, or remove the agents. There is no charge for the pilot.</p></details>
+        <details><summary>Does our data leave our office?</summary><p>Not if you choose your own server. PC data stays on your server and backups go to cloud storage in your own account. A hosted option is there for those who prefer it.</p></details>
+        <details><summary>How do we know it is worth the money?</summary><p>Run the free 30-day pilot on 25 PCs. The 30-day report shows every problem, its cause and what was repaired, so you decide on your own results.</p></details>
+        <details><summary>Can staff misuse remote access?</summary><p>Each person gets only the rights you give them. Remote control can ask the user first, needs two-step sign-in, and every session is recorded with the technician's name.</p></details>
+        <details><summary>We already have an IT team. Why this?</summary><p>So they spend the day on your business instead of fire-fighting. Repairs, updates and backups run at night, and the team starts the morning with a short list.</p></details>
+        <details><summary>How long does rollout take?</summary><p>One small installer per PC, or pushed to the whole network. Each PC appears within five minutes. Most offices are running in an afternoon.</p></details>
+        <details><summary>Will it slow our computers down?</summary><p>No. The agent uses a small share of the processor, and repairs and updates wait until after working hours.</p></details>
         <details><summary>Can we sell it under our own name?</summary><p>Yes, with the Partner plan: your name and logo, all your customers in one console, and your own price.</p></details>
       </div>
     </div>
@@ -736,12 +725,12 @@ footer a { color: #fff; }
   <section id="demo" class="final">
     <div class="wrap"><div class="box">
       <div>
-        <h2>Book a free demo.</h2>
-        <p class="lede" style="margin-top:14px">A 20-minute call on WhatsApp or Google Meet: we show the console live, answer your questions, and set up a free 30-day pilot on up to 25 of your PCs.</p>
+        <h2>See your own numbers in 20 minutes.</h2>
+        <p class="lede" style="margin-top:14px">A short call on WhatsApp or Google Meet. We show the owner's view and the console live, answer your CTO's questions, and set up a free 30-day pilot on up to 25 of your PCs.</p>
         <ol>
           <li><span>Send the form. It opens WhatsApp with your details already written.</span></li>
-          <li><span>We call you back the same working day and show the live console.</span></li>
-          <li><span>For the pilot you run one small installer per PC; your PCs appear within five minutes.</span></li>
+          <li><span>We call you back the same working day.</span></li>
+          <li><span>After 30 days you see every problem caught and fixed in your own report, then decide.</span></li>
         </ol>
       </div>
       <form class="book" id="book" novalidate>
@@ -750,10 +739,13 @@ footer a { color: #fff; }
         <label for="b-org">Organization<input id="b-org" name="org" autocomplete="organization" required></label>
         <div class="two">
           <label for="b-phone">Mobile<input id="b-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
-          <label for="b-pcs">Computers<select id="b-pcs" name="pcs"><option>Up to 25</option><option>25 to 100</option><option>100 to 500</option><option>More than 500</option></select></label>
+          <label for="b-role">Your role<select id="b-role" name="role"><option>Owner or director</option><option>CTO or IT head</option><option>IT team</option><option>Other</option></select></label>
         </div>
-        <label for="b-when">Best time to call<select id="b-when" name="when"><option>Today</option><option>Tomorrow morning</option><option>Tomorrow afternoon</option><option>This week</option></select></label>
-        <label for="b-need">What matters most (optional)<textarea id="b-need" name="need" rows="2" placeholder="For example: PCs crash, remote support, backups, updates"></textarea></label>
+        <div class="two">
+          <label for="b-pcs">Computers<select id="b-pcs" name="pcs"><option>Up to 25</option><option>25 to 100</option><option>100 to 500</option><option>More than 500</option></select></label>
+          <label for="b-when">Best time to call<select id="b-when" name="when"><option>Today</option><option>Tomorrow morning</option><option>Tomorrow afternoon</option><option>This week</option></select></label>
+        </div>
+        <label for="b-need">What matters most (optional)<textarea id="b-need" name="need" rows="2" placeholder="For example: downtime, data safety, audit, remote support"></textarea></label>
         <button class="btn primary" type="submit" id="b-send">Book my demo on WhatsApp</button>
         <p class="note" id="b-note">Or write to us: <span id="b-alt">sagarkerhalkar.com</span></p>
       </form>
@@ -761,7 +753,7 @@ footer a { color: #fff; }
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Sagar RMM, by Sagar Kerhalkar</span><span>Monitoring, repair, updates, remote and backup for Windows, Linux, macOS and Android</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Sagar RMM, by Sagar Kerhalkar</span><span>Control of every computer in your organization: health, risk, cost and security</span></div></footer>
 
 <script>
 // Contact details: fill these two lines, nothing else needs to change.
@@ -769,18 +761,37 @@ const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + numbe
 
 (function () {
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (id) => document.getElementById(id);
+  const inr = (n) => "₹" + Math.round(n).toLocaleString("en-IN");
+
+  // Downtime cost: the visitor's own numbers, worked out in the browser.
+  const calc = () => {
+    const pcs = +$("c-pcs").value, hrs = +$("c-hrs").value, rate = +$("c-rate").value, share = +$("c-share").value / 100;
+    const loss = pcs * hrs * rate, cost = pcs * 144, gain = loss * share - cost;
+    $("c-pcs-v").textContent = pcs.toLocaleString("en-IN"); $("c-hrs-v").textContent = hrs + " h";
+    $("c-rate-v").textContent = inr(rate); $("c-share-v").textContent = Math.round(share * 100) + "%";
+    $("c-loss").textContent = inr(loss); $("c-cost").textContent = inr(cost);
+    $("c-gain").textContent = gain >= 0 ? inr(gain) : "Not yet";
+    $("c-year").textContent = gain >= 0 ? inr(gain * 12) : "–";
+    $("c-note").textContent = gain >= 0
+      ? "Pro at ₹144 per PC a month, before GST. The pilot costs nothing, so you can measure your real number first."
+      : "At these numbers the saving is smaller than the price; the free pilot shows your real numbers before you pay anything.";
+  };
+  ["c-pcs", "c-hrs", "c-rate", "c-share"].forEach((id) => $(id).addEventListener("input", calc));
+  calc();
+
+  // Demo booking: opens WhatsApp (or email) with the visitor's details written.
   const wa = CONTACT.whatsapp.replace(/\D/g, "");
-  document.getElementById("b-alt").textContent = [CONTACT.email, wa ? "+" + wa : ""].filter(Boolean).join(", ") || "sagarkerhalkar.com";
-  document.getElementById("book").addEventListener("submit", (e) => {
+  $("b-alt").textContent = [CONTACT.email, wa ? "+" + wa : ""].filter(Boolean).join(", ") || "sagarkerhalkar.com";
+  $("book").addEventListener("submit", (e) => {
     e.preventDefault();
     const f = e.target, v = (n) => (f.elements[n].value || "").trim();
-    const note = document.getElementById("b-note");
+    const note = $("b-note");
     if (!v("name") || !v("org") || v("phone").replace(/\D/g, "").length < 10) {
-      note.textContent = "Please give your name, organization and a 10-digit mobile number.";
-      return;
+      note.textContent = "Please give your name, organization and a 10-digit mobile number."; return;
     }
-    const text = "Hi Sagar, I'd like a free Sagar RMM demo.\nName: " + v("name") + "\nOrganization: " + v("org") +
-      "\nMobile: " + v("phone") + "\nComputers: " + v("pcs") + "\nBest time: " + v("when") + (v("need") ? "\nNeed: " + v("need") : "");
+    const text = "Hi Sagar, I'd like a Sagar RMM demo.\nName: " + v("name") + "\nRole: " + v("role") + "\nOrganization: " + v("org") +
+      "\nMobile: " + v("phone") + "\nComputers: " + v("pcs") + "\nBest time: " + v("when") + (v("need") ? "\nWhat matters: " + v("need") : "");
     if (wa) {
       window.location.href = "https://wa.me/" + wa + "?text=" + encodeURIComponent(text);
       note.innerHTML = '<span class="msg-ok">WhatsApp is opening with your details. Press Send there.</span>';
@@ -792,31 +803,7 @@ const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + numbe
     }
   });
 
-  // Hero: a problem card that turns into "fixed", one after another.
-  const fixes = [
-    ["LAB1-PC04 may not start tomorrow", "Disk errors 3 times this week, switched off at the wall twice.", "Disk repaired at 11:20 PM. Files backed up."],
-    ["ACCOUNTS-2: 7 updates failed", "Windows Update stopped at 0x800f0922.", "Update service repaired; all 7 installed after hours."],
-    ["RECEPTION went off at 11:42", "No shutdown. Was it the office power?", "Only this PC: check its cable and UPS. Started again, disk OK."],
-    ["DESIGN-MAC disk 95% full", "Apps and updates will stop working.", "Temporary files cleared: 38 GB free now."],
-  ];
-  const card = document.getElementById("fixcard");
-  const put = (i) => {
-    const [t, w, n] = fixes[i];
-    document.getElementById("fix-title").textContent = t;
-    document.getElementById("fix-was").textContent = w;
-    document.getElementById("fix-now").textContent = n;
-  };
-  let fi = 0;
-  put(0);
-  if (still) { card.classList.add("done"); document.getElementById("fix-state").textContent = "Fixed"; }
-  else {
-    setInterval(() => {
-      if (!card.classList.contains("done")) { card.classList.add("done"); document.getElementById("fix-state").textContent = "Fixed by itself"; }
-      else { fi = (fi + 1) % fixes.length; card.classList.remove("done"); document.getElementById("fix-state").textContent = "Problem found"; put(fi); }
-    }, 3200);
-  }
-
-  // Live tour: five console screens with sample data, playing by themselves until someone clicks.
+  // Live tour.
   const screens = [
     `<div class="chrome"><i></i><i></i><i></i><span>Self-check · 68 PCs</span></div><div class="app"><div class="side"><span class="on">Self-check</span><span>Problems</span><span>Remote</span><span>Backups</span><span>Machines</span></div><div class="main"><h4>2 PCs need attention</h4><div class="kpis"><div class="kpi"><strong>66</strong><span>All features OK</span></div><div class="kpi" style="--k:var(--warn)"><strong>1</strong><span>Waiting for sign-in</span></div><div class="kpi" style="--k:var(--bad)"><strong>1</strong><span>Broken</span></div></div><div class="rowx"><div><b>FINANCE-PC2 · Remote</b><small>Antivirus blocks the remote program. Add the folder to its exclusions.</small></div><span class="tagx bad">Broken</span></div><div class="rowx"><div><b>DESIGN-01 · Remote</b><small>Switched to Xorg; the screen works after the next sign-in.</small></div><span class="tagx warn">Waiting</span></div><div class="rowx"><div><b>RECEPTION · Errors</b><small>Last log line 2 minutes ago</small></div><span class="tagx ok">OK</span></div></div></div>`,
     `<div class="chrome"><i></i><i></i><i></i><span>Problems · open</span></div><div class="app"><div class="side"><span>Self-check</span><span class="on">Problems</span><span>Remote</span><span>Backups</span><span>Machines</span></div><div class="main"><h4>3 open · 14 resolved this week</h4><div class="rowx"><div><b>ACCOUNTS-PC · Disk errors 3×</b><small>Cause: failing disk sectors. Fix: back up today, run disk repair.</small></div><span class="tagx run">Repairing</span></div><div class="rowx"><div><b>LAB-07 · Blue screen (nvlddmkm.sys)</b><small>Cause: graphics driver. Fix: driver update queued for 11 PM.</small></div><span class="tagx warn">Fix tonight</span></div><div class="rowx"><div><b>RECEPTION · Lost power while in use</b><small>Cause: this PC's power, not an office cut. Check cable and UPS.</small></div><span class="tagx bad">Open</span></div><span class="btnx">Repair all automatically</span></div></div>`,
@@ -824,7 +811,7 @@ const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + numbe
     `<div class="chrome"><i></i><i></i><i></i><span>Backups · Google Drive</span></div><div class="app"><div class="side"><span>Self-check</span><span>Problems</span><span>Remote</span><span class="on">Backups</span><span>Machines</span></div><div class="main"><h4>66 PCs backed up last night</h4><div class="kpis"><div class="kpi"><strong>66</strong><span>Backed up</span></div><div class="kpi" style="--k:var(--cyan)"><strong>1</strong><span>Backing up</span></div><div class="kpi" style="--k:var(--bad)"><strong>1</strong><span>Failed</span></div></div><div class="rowx"><div><b>HR-LAPTOP</b><small>Backing up: 62% · 3.1 GB of 5.0 GB · about 6 min left</small></div><span class="tagx run">Running</span></div><div class="rowx"><div><b>ACCOUNTS-PC</b><small>Last night 23:14 · 412 MB added · 7 daily, 4 weekly, 6 monthly kept</small></div><span class="tagx ok">Backed up</span></div><span class="btnx">Restore a folder</span></div></div>`,
     `<div class="chrome"><i></i><i></i><i></i><span>Ask</span></div><div class="app"><div class="side"><span>Self-check</span><span>Problems</span><span>Remote</span><span>Backups</span><span class="on">Ask</span></div><div class="main"><h4>Ask anything about your PCs</h4><div class="msg me" style="justify-self:end">kal kaun se PC band hue the?</div><div class="msg bot">3 PCs went off yesterday: RECEPTION lost power at 11:42, LAB-07 froze after a graphics crash, FINANCE-PC2 was shut down normally.</div><div class="msg me" style="justify-self:end">it2 pc jagao</div><div class="msg bot">Waking IT2-PC. It will be ready in about a minute.</div></div></div>`,
   ];
-  const panel = document.getElementById("tour-panel");
+  const panel = $("tour-panel");
   const tabs = [...document.querySelectorAll(".tab")];
   let current = 0, auto = !still, started = performance.now();
   const show = (i) => {
@@ -839,17 +826,13 @@ const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + numbe
   tabs.forEach((t, k) => t.addEventListener("click", () => { auto = false; show(k); }));
   if (!still) {
     const tick = (now) => {
-      if (auto) {
-        const p = Math.min(1, (now - started) / 5000);
-        tabs[current].style.setProperty("--p", (p * 100).toFixed(1) + "%");
-        if (p >= 1) show((current + 1) % screens.length);
-      }
+      if (auto) { const p = Math.min(1, (now - started) / 5000); tabs[current].style.setProperty("--p", (p * 100).toFixed(1) + "%"); if (p >= 1) show((current + 1) % screens.length); }
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   }
 
-  // Real screens gallery.
+  // Real screens.
   const shots = [
     ["img/home.webp", "Home", "The health score, what to fix first, every internet line and every network device."],
     ["img/machines.webp", "Machines", "Every PC with its CPU, memory, disk and network, and the problem in plain words."],
@@ -860,20 +843,30 @@ const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + numbe
   shotTabs.forEach((b) => b.addEventListener("click", () => {
     const [src, name, cap] = shots[Number(b.dataset.shot)];
     shotTabs.forEach((x) => x.setAttribute("aria-selected", String(x === b)));
-    const img = document.getElementById("shot-img");
-    img.src = src; img.alt = "Sagar RMM " + name + " screen";
-    document.getElementById("shot-url").textContent = "your-server / " + name;
-    document.getElementById("shot-cap").textContent = cap;
+    const img = $("shot-img"); img.src = src; img.alt = "Sagar RMM " + name + " screen";
+    $("shot-url").textContent = "your-server / " + name; $("shot-cap").textContent = cap;
   }));
+
+  // Health score ring fills when it comes into view.
+  const ring = $("ring");
+  if (!still && "IntersectionObserver" in window) {
+    ring.style.setProperty("--s", "0"); ring.dataset.s = "0";
+    new IntersectionObserver((entries, obs) => entries.forEach((en) => {
+      if (!en.isIntersecting) return; obs.disconnect();
+      const t0 = performance.now();
+      const step = (t) => { const k = Math.min(1, (t - t0) / 1400), v = Math.round(92 * (1 - Math.pow(1 - k, 3)));
+        ring.style.setProperty("--s", String(v)); ring.dataset.s = String(v); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    }), { threshold: .5 }).observe(ring);
+  }
 
   // 3D tilt that follows the pointer.
   if (!still && window.matchMedia("(pointer: fine)").matches) {
-    const hero = document.getElementById("hero-tilt");
-    document.getElementById("hero-stage").closest("section").addEventListener("pointermove", (e) => {
+    const hero = $("hero-tilt");
+    $("hero-stage").closest("section").addEventListener("pointermove", (e) => {
       const r = hero.getBoundingClientRect();
       const x = (e.clientX - (r.left + r.width / 2)) / r.width, y = (e.clientY - (r.top + r.height / 2)) / r.height;
-      hero.style.setProperty("--ry", (-13 + x * 12).toFixed(2) + "deg");
-      hero.style.setProperty("--rx", (7 - y * 10).toFixed(2) + "deg");
+      hero.style.setProperty("--ry", (-13 + x * 12).toFixed(2) + "deg"); hero.style.setProperty("--rx", (7 - y * 10).toFixed(2) + "deg");
     });
     document.querySelectorAll("[data-tilt]").forEach((el) => {
       const base = { rx: parseFloat(el.style.getPropertyValue("--rx")), ry: parseFloat(el.style.getPropertyValue("--ry")) };
@@ -884,27 +877,6 @@ const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + numbe
       });
       el.parentElement.addEventListener("pointerleave", () => { el.style.setProperty("--ry", base.ry + "deg"); el.style.setProperty("--rx", base.rx + "deg"); });
     });
-  }
-
-  // Ask typing its answer.
-  const typed = document.getElementById("typed");
-  const answers = ["Lost power at 11:42 while in use. Check its cable and UPS.", "IT2 PC is waking up, ready in about a minute.", "7 updates installed on LAB1 last night."];
-  if (!still) {
-    let a = 0, i = 0;
-    setInterval(() => { const text = answers[a]; i += 1; typed.textContent = text.slice(0, i); if (i > text.length + 40) { a = (a + 1) % answers.length; i = 0; } }, 45);
-  } else { typed.textContent = answers[0]; typed.classList.remove("typing"); }
-
-  // Count-up numbers.
-  const run = (el) => {
-    const end = Number(el.dataset.count), pre = el.dataset.prefix || "", suf = el.dataset.suffix || "";
-    if (still || end === 0) return;
-    const t0 = performance.now();
-    const step = (t) => { const k = Math.min(1, (t - t0) / 1400); el.textContent = pre + Math.round(end * (1 - Math.pow(1 - k, 3))) + suf; if (k < 1) requestAnimationFrame(step); };
-    requestAnimationFrame(step);
-  };
-  if ("IntersectionObserver" in window) {
-    const once = new IntersectionObserver((entries) => entries.forEach((en) => { if (en.isIntersecting) { run(en.target); once.unobserve(en.target); } }), { threshold: .6 });
-    document.querySelectorAll("[data-count]").forEach((el) => once.observe(el));
   }
 })();
 </script>
