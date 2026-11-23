@@ -828,17 +828,17 @@ footer a { color: #fff; }
         </div>
         <label for="b-need">What matters most (optional)<textarea id="b-need" name="need" rows="2" placeholder="For example: downtime, data safety, audit, remote support"></textarea></label>
         <button class="btn primary" type="submit" id="b-send">Book my demo on WhatsApp</button>
-        <p class="note" id="b-note">Or write to us: <span id="b-alt">sagarkerhalkar.com</span></p>
+        <p class="note" id="b-note">Or reach us directly: <span id="b-alt">sagarkerhalkar.com</span></p>
       </form>
     </div></div>
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Sagar RMM, by Sagar Kerhalkar</span><span>Control of every computer in your organization: health, risk, cost and security</span><span class="credit">People illustrations: Humaaans by Pablo Stanley, CC BY 4.0</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Sagar RMM, by Sagar Kerhalkar</span><span id="f-contact"></span><span>Control of every computer in your organization: health, risk, cost and security</span><span class="credit">People illustrations: Humaaans by Pablo Stanley, CC BY 4.0</span></div></footer>
 
 <script>
 // Contact details: fill these two lines, nothing else needs to change.
-const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + number, e.g. "919800000000"
+const CONTACT = { whatsapp: "918105977226", email: "sagarhatta@gmail.com" };   // whatsapp: country code + number, e.g. "919800000000"
 
 (function () {
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -979,7 +979,10 @@ const CONTACT = { whatsapp: "", email: "" };   // whatsapp: country code + numbe
 
   // Demo booking: opens WhatsApp (or email) with the visitor's details written.
   const wa = CONTACT.whatsapp.replace(/\D/g, "");
-  $("b-alt").textContent = [CONTACT.email, wa ? "+" + wa : ""].filter(Boolean).join(", ") || "sagarkerhalkar.com";
+  const waShown = wa ? "+" + wa.slice(0, 2) + " " + wa.slice(2, 7) + " " + wa.slice(7) : "";
+  const links = [wa ? `<a href="tel:+${wa}">Call ${waShown}</a>` : "", wa ? `<a href="https://wa.me/${wa}">WhatsApp</a>` : "",
+    CONTACT.email ? `<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>` : ""].filter(Boolean);
+  if (links.length) { $("b-alt").innerHTML = links.join(", "); $("f-contact").innerHTML = links.join(" &nbsp; "); }
   $("book").addEventListener("submit", (e) => {
     e.preventDefault();
     const f = e.target, v = (n) => (f.elements[n].value || "").trim();
